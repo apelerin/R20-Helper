@@ -18,7 +18,7 @@ def login_and_launch_game():
 	login_btn = driver.find_element_by_xpath("/html/body/div[2]/div[3]/div[1]/div/form/p[2]/button")
 	login_btn.click()
 	driver.implicitly_wait(15)
-	driver.get(input("Game Link"))
+	driver.get(input("Game Link: "))
 	driver.implicitly_wait(20)
 	return driver
 
@@ -31,7 +31,6 @@ def listining_to_chat(driver):
 		last_message = driver.find_elements_by_class_name('message')[-1]
 		if last_message.get_attribute('data-messageid') != previous_id:
 			if last_message.text.startswith('peutchon'):
-				# Search for the right function to apply
 				functions.switcher(last_message.text, driver)
 			previous_id = last_message.get_attribute('data-messageid')
 
