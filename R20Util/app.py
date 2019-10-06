@@ -11,12 +11,14 @@ def login_and_launch_game():
 	driver = webdriver.Firefox()
 	driver.get("https://app.roll20.net/editor/")
 	assert "Roll20" in driver.title
+
 	user_input = driver.find_element_by_xpath("/html/body/div[2]/div[3]/div[1]/div/form/input[1]")
 	user_input.send_keys(user)
 	password_input = driver.find_element_by_xpath("/html/body/div[2]/div[3]/div[1]/div/form/input[2]")
 	password_input.send_keys(pwd)
 	login_btn = driver.find_element_by_xpath("/html/body/div[2]/div[3]/div[1]/div/form/p[2]/button")
 	login_btn.click()
+
 	driver.implicitly_wait(15)
 	driver.get(input("Game Link: "))
 	driver.implicitly_wait(20)
